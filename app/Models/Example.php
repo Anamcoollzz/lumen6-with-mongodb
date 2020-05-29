@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Jenssegers\Mongodb\Eloquent\Model;
 
-class Log extends Model {
+class Example extends Model {
 
     protected $fillable = [
 
