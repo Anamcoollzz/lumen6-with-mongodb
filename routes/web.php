@@ -12,5 +12,12 @@
 */
 
 $router->get('/', function () use ($router) {
+    // $client = new GuzzleHttp\Client();
+    // try {
+    //     $response = $client->request('GET', 'http://localhost:8001');
+    //     return $response;
+    // } catch (\Throwable $th) {
+    //     return 'error';
+    // }
     return $router->app->version();
 });
