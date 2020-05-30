@@ -11,6 +11,8 @@
 |
 */
 
+use App\Services\LogService;
+
 $router->get('/', function () use ($router) {
     // $client = new GuzzleHttp\Client();
     // try {
@@ -19,5 +21,16 @@ $router->get('/', function () use ($router) {
     // } catch (\Throwable $th) {
     //     return 'error';
     // }
-    return $router->app->version();
+    $log = new LogService;
+    return $log->saveBatch([
+        'logs'=>[
+            'user_id'   => null,
+            'action'    => 'create',
+            'table'     => 'uji',
+            'deskripsi' => 'uji',
+            'before'    => null,
+            'after'     => 'uji',
+        ]
+    ]);
+    // return $router->app->version();
 });
