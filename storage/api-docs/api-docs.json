@@ -1,0 +1,311 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Example API",
+        "contact": {
+            "name": "Support Team",
+            "email": "support@example.com"
+        },
+        "version": "1.0"
+    },
+    "paths": {
+        "/example": {
+            "get": {
+                "tags": [
+                    "Example"
+                ],
+                "operationId": "App\\Http\\Controllers\\ExampleController::index",
+                "parameters": [
+                    {
+                        "name": "data_count",
+                        "in": "query",
+                        "description": "total data",
+                        "required": false,
+                        "schema": {
+                            "type": "int"
+                        }
+                    },
+                    {
+                        "name": "order_by",
+                        "in": "query",
+                        "description": "latest or oldest",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "query",
+                        "in": "query",
+                        "description": "search query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Example data successfully loaded"
+                                        },
+                                        "data": {
+                                            "$ref": "#/components/schemas/ExamplePagination"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Example"
+                ],
+                "operationId": "App\\Http\\Controllers\\ExampleController::store",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ExampleRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string"
+                                        },
+                                        "data": {
+                                            "$ref": "#/components/schemas/ExampleModel"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/example/{_id}": {
+            "get": {
+                "tags": [
+                    "Example"
+                ],
+                "operationId": "App\\Http\\Controllers\\ExampleController::show",
+                "parameters": [
+                    {
+                        "name": "_id",
+                        "in": "path",
+                        "description": "example id",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Example data successfully loaded"
+                                        },
+                                        "data": {
+                                            "$ref": "#/components/schemas/ExampleModel"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Example"
+                ],
+                "operationId": "App\\Http\\Controllers\\ExampleController::update",
+                "parameters": [
+                    {
+                        "name": "_id",
+                        "in": "path",
+                        "description": "example id",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ExampleRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Master template successfully updated"
+                                        },
+                                        "data": {
+                                            "$ref": "#/components/schemas/ExampleModel"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Example"
+                ],
+                "operationId": "App\\Http\\Controllers\\ExampleController::destroy",
+                "parameters": [
+                    {
+                        "name": "_id",
+                        "in": "path",
+                        "description": "example id",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Example data successfully removed"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "ExampleModel": {
+                "title": "ExampleModel",
+                "description": "ExampleModel",
+                "properties": {
+                    "_id": {
+                        "type": "string",
+                        "example": "5ed100e5eb9c10255950cce0"
+                    },
+                    "example": {
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "ExampleRequest": {
+                "title": "ExampleRequest",
+                "description": "ExampleRequest",
+                "properties": {
+                    "example": {
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "ExamplePagination": {
+                "title": "ExamplePagination",
+                "description": "ExamplePagination",
+                "properties": {
+                    "current_page": {
+                        "type": "int",
+                        "example": 1
+                    },
+                    "data": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/ExampleModel"
+                        }
+                    },
+                    "first_page_url": {
+                        "type": "string",
+                        "example": "http://localhost:8000/example?page=1"
+                    },
+                    "from": {
+                        "type": "int",
+                        "example": 1
+                    },
+                    "last_page": {
+                        "type": "int",
+                        "example": 11
+                    },
+                    "last_page_url": {
+                        "type": "string",
+                        "example": "http://localhost:8000/example?page=11"
+                    },
+                    "next_page_url": {
+                        "type": "string",
+                        "example": "http://localhost:8000/example?page=12"
+                    },
+                    "per_page": {
+                        "type": "int",
+                        "example": 15
+                    },
+                    "prev_page_url": {
+                        "type": "int",
+                        "example": null
+                    },
+                    "to": {
+                        "type": "int",
+                        "example": 15
+                    },
+                    "total": {
+                        "type": "int",
+                        "example": 15
+                    }
+                },
+                "type": "object"
+            }
+        }
+    }
+}

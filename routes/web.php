@@ -13,7 +13,8 @@
 
 use App\Services\LogService;
 
-$router->get('/', function () use ($router) {
+
+$router->get('/example', function () use ($router) {
     // $client = new GuzzleHttp\Client();
     // try {
     //     $response = $client->request('GET', 'http://localhost:8001');
@@ -34,3 +35,5 @@ $router->get('/', function () use ($router) {
     ]);
     // return $router->app->version();
 });
+
+$router->get('/example', 'ExampleController@index');
